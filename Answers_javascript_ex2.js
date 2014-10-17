@@ -31,12 +31,9 @@ print a sum of all the even numbers up to a given value
 */
 
 
-var g_max = 500;
-var filter_list = [];
-
-function even(g_num)
+function even(num)
 {
-    return g_num % 2 === 0;
+    return num % 2 === 0;
 }
 
 function fibonacci_set(g_max)
@@ -51,7 +48,6 @@ function fibonacci_set(g_max)
             list_length = fib_list.length;
             current_fib = fib_list[list_length-1]+fib_list[list_length-2];
         }
-    console.log("fib_list = " + fib_list);
     return fib_list;
     }
 
@@ -64,8 +60,6 @@ function filter(fib_list)
         if (even(fib_list[item])===true)
         {
            even_list.push(fib_list[item]);
-           console.log("item = " + item);
-           console.log("even_list = " + even_list);
         }
 
     }   /*  the values in even_list are the "indexes" and not the actual 
@@ -73,8 +67,22 @@ function filter(fib_list)
     */
     return even_list;
 }
-console.log("returned from fibonacci_set = " + fibonacci_set(g_max));
-filter_list = filter(fibonacci_set(g_max));
-console.log("did I get here?");
 
-console.log("list returned from filter = " + filter_list);
+function sum(even_list)
+{
+   var count=0;
+   for (var i=even_list.length; i--;)
+   {
+     count+= even_list[i];
+   }
+   return count;
+}
+var g_max = 4000000;
+console.log("returned from fibonacci_set = " + fibonacci_set(g_max));
+console.log(sum(filter(fibonacci_set(g_max))));
+
+
+
+
+
+
